@@ -37,6 +37,8 @@ public class Practice1 {
                 if(mid < right){
                     merge(arr, left, mid, right);
                 }
+                System.out.println("left : " + left + " mid : " + mid + " right : " + right);
+                System.out.println("merge 실행 후의 arr : " + Arrays.toString(arr));
             }
         }
     }
