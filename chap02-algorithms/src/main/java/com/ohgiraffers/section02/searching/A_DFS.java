@@ -43,8 +43,8 @@ public class A_DFS {
             // 무방향 그래프이므로 둘 다 1로 설정
             map[a][b] = map[b][a] = 1;
         }
-        dfsRecursive(1);  // 인자는 시작값 1로 지정
-
+//        dfsStack(1);  // 인자는 시작값 1로 지정
+        dfsRecursive(1);
         return count;
     }
 
@@ -52,7 +52,7 @@ public class A_DFS {
      * Stack을 활용한 DFS
      * @param start
      */
-    private static void dfsRecursive(int start) {
+    private static void dfsStack(int start) {
 
         Stack<Integer> stack = new Stack<>();
         stack.push(start);   // start값을 stack에 처음으로 넣어준다.
@@ -69,4 +69,47 @@ public class A_DFS {
             }
         }
     }
+
+    /***
+     * 재귀 함수로 DFS알고리즘을 구현한 메소드
+     * @param start
+     */
+    public static void dfsRecursive(int start) {
+
+        /* 해당 노드를 방문했으므로 방문 배열에 표기 */
+        visit[start] = true;
+
+        /* start 노드의 이웃을 탐핵하는 과정 */
+        for(int i = 1; i <= node; i++){
+            /* start 정점의 이웃 중 방문하지 않은 이웃을 찾는다. */
+            if(map[start][i] == 1 && !visit[i]){
+                /* 바이러스를 전파할 이웃 노드 컴퓨터를 찾은 것이므로
+                * count를 증가시키고 해당 이웃 노드를 방문해서 다시 이웃노드를
+                * 재귀적으로 탐색한다.
+                * */
+                count++;
+                dfsRecursive(i);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
