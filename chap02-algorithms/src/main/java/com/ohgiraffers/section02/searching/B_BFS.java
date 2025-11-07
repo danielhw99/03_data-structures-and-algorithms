@@ -1,7 +1,11 @@
 package com.ohgiraffers.section02.searching;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.StringTokenizer;
 
 /*
  * 너비 우선 탐색(Breadth-First Search)
@@ -41,7 +45,35 @@ public class B_BFS {
     // BFS로 문제를 해결하기 위한 Queue
     static Queue<Node> q = new LinkedList<>();
 
-    public static int solution(String input) {
+    public static int solution(String input) throws IOException {
+
+        BufferedReader br = new BufferedReader(new StringReader(input));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        M = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        K = Integer.parseInt(st.nextToken());
+
+        map = new int[M][N];
+        visit = new boolean[M][N];
+
+        /* 배추 밭에 배추 심기 */
+        for(int i = 0; i < K; i++) {
+            st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            map[x][y] = 1;
+        }
+
+        // 출력확인
+        System.out.println("배추밭");
+        for(int i = 0; i < M; i++) {
+            for(int j = 0; j < N; j++) {
+                System.out.print(map[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("---------------------------------------");
+
 
         return count;
     }
