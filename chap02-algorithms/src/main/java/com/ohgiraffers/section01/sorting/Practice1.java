@@ -1,5 +1,7 @@
 package com.ohgiraffers.section01.sorting;
 
+import java.util.Arrays;
+
 /*
 * TimSort 구현하기
 *
@@ -16,6 +18,22 @@ public class Practice1 {
 
         for(int i = 0; i < n; i += RUN){
             insertionSort(arr, i, Math.min((i + RUN - 1), n - 1));
+        }
+
+        System.out.println("삽입정렬 수행 수의 arr : " + Arrays.toString(arr));
+        /* 병합 과정에서 병합할 두 구간의 크기(size) 를 조정
+         * 배열 전체를 다룰 때까지 병합할 구간의 크기를 확장
+         * 한 단계마다 두 개의 정렬된 구간을 병합하여 구간 크기를 두 배로 늘림
+         * 처음에는 두 개의 RUN 구간을 병합하고, 그 다음에는 두 개의 2×RUN 구간을 병합
+         * */
+        for(int size = RUN; size < n; size = 2 * size){
+            /* 배열 전체를 순회하면서, 현재 size에 해당하는 두 개의 정렬된 구간을 찾아서 병합
+             * 한 번에 두 개의 구간(각각의 크기가 size)을 병합하기 때문에
+             * 병합이 끝난 후 다음 두 구간으로 건너뛰기 위해 2×size 만큼 증가
+             * */
+            for(int left = 0; left < n ; left += 2 * size){
+
+            }
         }
     }
 
