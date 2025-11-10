@@ -54,6 +54,10 @@ public class E_BruteForce {
             if(!visited[i]) { // 이미 선택한 정수는 건너뛰어 가지치기한다.
                 visited[i] = true;
                 perm.add(nums[i]); /// 실제 정수 값을 순열에 추가
+                backtrack(depth + 1, n, perm);
+                // 백트래킹 : 선택했던 정수의 사용상태를 원상복구 및 순열에서 제거
+                perm.remove(perm.size()-1);
+                visited[i] = false;
             }
         }
     }
